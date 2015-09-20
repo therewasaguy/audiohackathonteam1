@@ -30,6 +30,7 @@ function EpisodesService() {
     // if it was liked, add to the likedEpisodes
     if (like) {
       _this.likedEpisodes.push(_this.episodeQueue[_this.epIndex]);
+      console.log(_this.likedEpisodes);
     }
     _this.playNext();
   };
