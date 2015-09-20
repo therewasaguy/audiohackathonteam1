@@ -13,6 +13,11 @@ angular.module('queueCastApp')
   		// return {'background-url' : 'url(' + episode.episode.image_urls.thumb + ')' };
   	};
 
+  	this.getLikedEpAmt = function () {
+  		console.log("ep service", EpisodesService.likedEpisodes.length);
+  		return EpisodesService.likedEpisodes.length;
+  	};
+
   	this.getShowTitle = function (episode) {
   		return episode.episode.show_title;
   	};
@@ -55,7 +60,7 @@ angular.module('queueCastApp')
 
 function swipeRightAnimation (triggerNextAudioFN) {
 			//playAudio(30, 45);
-			triggerNextAudioFN(true);
+			if (triggerNextAudioFN) {triggerNextAudioFN(true);}
 			$('.buddy:visible').addClass('rotate-left').delay(700).fadeOut(1);
 			$('.buddy:visible').find('.status').remove();
 
@@ -64,12 +69,17 @@ function swipeRightAnimation (triggerNextAudioFN) {
 				$('.buddy:visible:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
 			} else {
 				$('.buddy:visible').next().removeClass('rotate-left rotate-right').fadeIn(400);
-			}
+			}			
+			
+			$('.buddy:visible').find('.status').fadeOut(600, function () {
+				$('.buddy:visible').find('.status').remove();
+			});
+			
 		}
 		
 function swipeLeftAnimation (triggerNextAudioFN) {
 	//playAudio(30, 45);
-	triggerNextAudioFN(false);
+	if (triggerNextAudioFN) {triggerNextAudioFN(false);}
 	$('.buddy:visible').addClass('rotate-right').delay(700).fadeOut(1);
 	$('.buddy:visible').find('.status').remove();
 	$('.buddy:visible').append('<div class="status dislike">SKIP</div>');
@@ -78,7 +88,11 @@ function swipeLeftAnimation (triggerNextAudioFN) {
 	 $('.buddy:visible:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
 	 } else {
 		$('.buddy:visible').next().removeClass('rotate-left rotate-right').fadeIn(400);
-	} 				
+	} 	
+	
+		$('.buddy:visible').find('.status').fadeOut(600, function () {
+			$('.buddy:visible').find('.status').remove();
+		});					
 
 }
 		

@@ -42,6 +42,24 @@ IMG#headphone {
     top: 19px;
 }
 
+IMG#headphoneSelected {
+    position: absolute;
+    height: auto;
+    width: 57px;
+    top: 7px;
+    right: 9px;    
+    
+}
+
+.epi-like-amt {
+    position: absolute;
+    top: 13px;
+    right: 19px;
+    color: white;
+    font-weight: 500;
+}
+
+
 DIV#previewActions {
 	position: absolute;
     width: 100%;
@@ -90,10 +108,10 @@ A#noClick {
   cursor: hand;
 }
 
-.showInfo { padding: 10px 55px; }
+.showInfo { padding: 10px 30px; }
 
 .showInfo H1 {font-size: 18px; text-align: center; font-weight: normal; font-style: italic; margin: 10px 0px 0px 0px; }
-.showInfo H2 {font-size: 32px; line-height: 38px;  font-weight: normal; text-align: center; margin: 10px 0px 15px 0px; }
+.showInfo H2 {font-size: 28px; line-height: 30px;  font-weight: normal; text-align: center; margin: 10px 0px 15px 0px; }
 .showInfo P {font-size: 14px; line-height: 17px;  text-align: center; font-weight: normal; margin: 0px; }
 
 .cardBG1 { background: url("../images/bg_card1.png"); background-size: 357px 447px; }
@@ -131,25 +149,25 @@ A#noClick {
 .like {
   border-radius: 5px;
   padding: 5px 10px;
-  border: 2px solid green;
+  border: 5px solid green;
   color: green;
   text-transform: uppercase;
   font-size: 80px;
   position: absolute;
   top: 70px;
-  right: 60px;
+  right: 70px;
   text-shadow: none;
 }
 .dislike {
   border-radius: 5px;
   padding: 5px 10px;
-  border: 2px solid red;
+  border: 5px solid red;
   color: red;
   text-transform: uppercase;
   font-size: 80px;
   position: absolute;
   top: 70px;
-  left: 60px;
+  left: 70px;
   text-shadow: none;
 }
 
