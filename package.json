@@ -4,7 +4,8 @@
   "description": "Repo for Audio Hackathon Team 1",
   "main": "server.js",
   "scripts": {
-    "test": "grunt test"
+    "start": "node serveroku.js",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -18,15 +19,10 @@
   "homepage": "https://github.com/therewasaguy/audiohackathonteam1",
   "dependencies": {
     "express": "~4.13.3",
-    "body-parser": "~1.14.0",
-    "cookie-parser": "~1.4.0",
-    "express-session": "~1.11.3",
-    "jade": "~1.11.0",
-    "request": "~2.62.0",
-    "dotenv": "~1.2.0"
-  },
-  "devDependencies": {
-    "grunt": "^0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt": "~0.4.5",
+    "compass": "~0.1.1",
+    "bower": "*",
     "grunt-angular-templates": "^0.5.7",
     "grunt-autoprefixer": "^2.0.0",
     "grunt-concurrent": "^1.0.0",
@@ -57,6 +53,7 @@
     "time-grunt": "^1.0.0"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "0.12.x",
+    "npm": "2.1.x"
   }
 }

@@ -8,26 +8,36 @@ angular.module('queueCastApp')
 
 
   	this.getImageUrl = function (episode) {
-  		console.log('url : ', episode.episode.image_urls.thumb);
-  		return episode.episode.image_urls.thumb;
+  		if (episode.episode) {
+  			episode = episode.episode;
+  		}
+  		return episode.image_urls.thumb;
   		// return {'background-url' : 'url(' + episode.episode.image_urls.thumb + ')' };
   	};
 
   	this.getLikedEpAmt = function () {
-  		console.log("ep service", EpisodesService.likedEpisodes.length);
   		return EpisodesService.likedEpisodes.length;
   	};
 
   	this.getShowTitle = function (episode) {
-  		return episode.episode.show_title;
+  		  		if (episode.episode) {
+  			episode = episode.episode;
+  		}
+  		return episode.show_title;
   	};
 
   	this.getEpisodeTitle = function (episode) {
-		return episode.episode.title;
+  		if (episode.episode) {
+  			episode = episode.episode;
+  		}
+		return episode.title;
   	};
 
   	this.getDuration = function (episode) {
-  		return episode.episode.audio_files[0].duration;
+  		if (episode.episode) {
+  			episode = episode.episode;
+  		}
+  		return episode.audio_files[0].duration;
   	};
 
   	$(document).ready(function(){

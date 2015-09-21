@@ -11,7 +11,6 @@ function EpisodesService($timeout) {
 
 	// this.episodeQueue = [];
   this.episodeQueue = getFakeEpisodes();
-
   this.likedEpisodes = [];
 
   this.audioDecks = [new p5AudioElt(), new p5AudioElt()];
@@ -78,10 +77,14 @@ function EpisodesService($timeout) {
 
       // which episode to load
       var episode = q[_index];
+      if (episode.episode) {
+        episode = episode.episode;
+      }
 
       // TO DO: how do we load mp3 and start/end time
-      var mp3URL = episode.episode.audio_files[0].url[0];
-      var startTime = episode.episode.audio_files[0].start_time || 200;
+
+      var mp3URL = episode.audio_files[0].url[0];
+      var startTime = episode.audio_files[0].start_time || 200;
       var endTime = startTime + 15;
       deck.src(mp3URL);
       deck.load();
@@ -115,7 +118,12 @@ function EpisodesService($timeout) {
       audioElt.play();
       window.audioElt = audioElt;
       var ep = this.episodeQueue[this.epIndex];
-      var startTime = ep.episode.audio_files[0].start_time || 200;
+
+      if (ep.episode) {
+        ep = ep.episode;
+      }
+
+      var startTime = ep.audio_files[0].start_time || 200;
       var endTime = startTime + 15;
 
       audioElt.time(startTime);
