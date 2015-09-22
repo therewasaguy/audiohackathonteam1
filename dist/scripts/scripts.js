@@ -115,7 +115,7 @@ angular.module('queueCastApp')
     // this.hitrailers = [ "url(http://files.thisamericanlife.org//sites//default//files//episodes//565_0.jpg)", "url(http://files.thisamericanlife.org//sites//default//files//episodes//565_0.jpg)", "url(http://files.thisamericanlife.org//sites//default//files//episodes//565_0.jpg)", "url(http://files.thisamericanlife.org//sites//default//files//episodes//565_0.jpg)", "url(http://files.thisamericanlife.org//sites//default//files//episodes//565_0.jpg)"];  
   	
   	this.episodes = EpisodesService.getEpisodeQueue();
-
+  	this.currentEpisode = EpisodesService.getCurrentEpisode();
 
   	this.getImageUrl = function (episode) {
   		if (episode.episode) {
@@ -130,7 +130,7 @@ angular.module('queueCastApp')
   	};
 
   	this.getShowTitle = function (episode) {
-  		  		if (episode.episode) {
+			if (episode.episode) {
   			episode = episode.episode;
   		}
   		return episode.show_title;
@@ -140,7 +140,7 @@ angular.module('queueCastApp')
   		if (episode.episode) {
   			episode = episode.episode;
   		}
-		return episode.title;
+			return episode.title;
   	};
 
   	this.getDuration = function (episode) {
@@ -2556,7 +2556,12 @@ function EpisodesService($timeout) {
 
 	// this.episodeQueue = [];
   this.episodeQueue = getFakeEpisodes();
+
   this.likedEpisodes = [];
+
+  this.getCurrentEpisode = function() {
+    return this.episodeQueue[this.epIndex];
+  };
 
   this.audioDecks = [new p5AudioElt(), new p5AudioElt()];
 
@@ -2965,9 +2970,9 @@ angular.module('queueCastApp').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('views/trailers.tpl.html',
-    "<div> <div class=\"something\">{{tsCtrl.getLikedEpAmt()}}</div> <div id=\"navBar\"> <div class=\"headerTitle\">Discover</div> <a href=\"/#/catetories\"><img src=\"images/carot.2725438a.png\" id=\"backToProfile\"></a> <a href=\"/#/queue\"><img src=\"images/headphone.e983631e.png\" id=\"headphone\"></a> <a href=\"/#/queue\" ng-if=\"tsCtrl.getLikedEpAmt()\"> <img src=\"images/headphone_selected.fdfb1edd.png\" id=\"headphoneSelected\"> <span class=\"epi-like-amt\">{{tsCtrl.getLikedEpAmt()}}</span> </a> </div> <div id=\"container\"> <div class=\"buddy cardBG1\" style=\"display: block\" ng-repeat=\"episode in tsCtrl.episodes\"> <div class=\"avatar\" style=\"display: block; background-image: url( {{ tsCtrl.getImageUrl(episode) }} )\"></div> <div class=\"showInfo\"> <h1>{{tsCtrl.getShowTitle(episode)}}</h1> <h2>{{tsCtrl.getEpisodeTitle(episode)}}</h2> </div> <div class=\"showInfoFriends\"> <p>Friends Who Have Like This</p> <img src=\"images/friends.a35d0428.png\"> </div> <div class=\"showInfoTags\"> <p>Tags</p> <img src=\"images/tags.eb40c0f7.png\"> </div> </div> <!-- \t\t<div class=\"buddy cardBG1\" ng-repeat=\"style in tsCtrl.hitrailers track by $index\">\n" +
+    "<div> <div class=\"something\">{{tsCtrl.getLikedEpAmt()}}</div> <div id=\"navBar\"> <div class=\"headerTitle\">Discover</div> <a href=\"/#/catetories\"><img src=\"images/carot.2725438a.png\" id=\"backToProfile\"></a> <a href=\"/#/queue\"><img src=\"images/headphone.e983631e.png\" id=\"headphone\"></a> <a href=\"/#/queue\" ng-if=\"tsCtrl.getLikedEpAmt()\"> <img src=\"images/headphone_selected.fdfb1edd.png\" id=\"headphoneSelected\"> <span class=\"epi-like-amt\">{{tsCtrl.getLikedEpAmt()}}</span> </a> </div> <div id=\"currentepisode\">{{tsCtrl.getCurrentEpisode}}</div> </div> <div id=\"container\"> <div class=\"buddy cardBG1\" style=\"display: block\" ng-repeat=\"episode in tsCtrl.episodes\"> <div class=\"avatar\" style=\"display: block; background-image: url( {{ tsCtrl.getImageUrl(episode) }} )\"></div> <div class=\"showInfo\"> <h1>{{tsCtrl.getShowTitle(episode)}}</h1> <h2>{{tsCtrl.getEpisodeTitle(episode)}}</h2> </div> <div class=\"showInfoFriends\"> <p>Friends Who Have Like This</p> <img src=\"images/friends.a35d0428.png\"> </div> <div class=\"showInfoTags\"> <p>Tags</p> <img src=\"images/tags.eb40c0f7.png\"> </div> </div> <!-- \t\t<div class=\"buddy cardBG1\" ng-repeat=\"style in tsCtrl.hitrailers track by $index\">\n" +
     "\t\t\t<div class=\"avatar\" style=\"display: block; background-image: {{ style }}\"></div>\n" +
-    "\t\t</div>  --> </div> <div id=\"previewActions\"> <a id=\"yesClick\" class=\"showPointer\"><img src=\"images/button_save.7d79d43b.png\"></a> <a id=\"noClick\" class=\"showPointer\"><img src=\"images/button_skip.53ba9a11.png\"></a> <audio id=\"soundHandle\" style=\"display:none\"></audio> <audio-qc is-playing=\"tsCtrl.isPlaying\"> </audio-qc> </div> </div>"
+    "\t\t</div>  --> </div> <div id=\"previewActions\"> <a id=\"yesClick\" class=\"showPointer\"><img src=\"images/button_save.7d79d43b.png\"></a> <a id=\"noClick\" class=\"showPointer\"><img src=\"images/button_skip.53ba9a11.png\"></a> <audio id=\"soundHandle\" style=\"display:none\"></audio> <audio-qc is-playing=\"tsCtrl.isPlaying\"> </audio-qc> </div> "
   );
 
 }]);

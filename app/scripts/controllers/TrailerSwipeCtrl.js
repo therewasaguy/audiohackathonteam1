@@ -5,7 +5,7 @@ angular.module('queueCastApp')
     // this.hitrailers = [ "url(http://files.thisamericanlife.org//sites//default//files//episodes//565_0.jpg)", "url(http://files.thisamericanlife.org//sites//default//files//episodes//565_0.jpg)", "url(http://files.thisamericanlife.org//sites//default//files//episodes//565_0.jpg)", "url(http://files.thisamericanlife.org//sites//default//files//episodes//565_0.jpg)", "url(http://files.thisamericanlife.org//sites//default//files//episodes//565_0.jpg)"];  
   	
   	this.episodes = EpisodesService.getEpisodeQueue();
-
+  	this.currentEpisode = EpisodesService.getCurrentEpisode();
 
   	this.getImageUrl = function (episode) {
   		if (episode.episode) {
@@ -20,7 +20,7 @@ angular.module('queueCastApp')
   	};
 
   	this.getShowTitle = function (episode) {
-  		  		if (episode.episode) {
+			if (episode.episode) {
   			episode = episode.episode;
   		}
   		return episode.show_title;
@@ -30,7 +30,7 @@ angular.module('queueCastApp')
   		if (episode.episode) {
   			episode = episode.episode;
   		}
-		return episode.title;
+			return episode.title;
   	};
 
   	this.getDuration = function (episode) {

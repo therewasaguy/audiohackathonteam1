@@ -11,7 +11,12 @@ function EpisodesService($timeout) {
 
 	// this.episodeQueue = [];
   this.episodeQueue = getFakeEpisodes();
+
   this.likedEpisodes = [];
+
+  this.getCurrentEpisode = function() {
+    return this.episodeQueue[this.epIndex];
+  };
 
   this.audioDecks = [new p5AudioElt(), new p5AudioElt()];
 
